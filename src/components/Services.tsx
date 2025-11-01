@@ -52,14 +52,6 @@ const Services = () => {
         })}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-6">
-            ¿Necesitas ayuda con algún servicio? Nuestro equipo de soporte estudiantil está aquí para asistirte.
-          </p>
-          <Button size="lg" onClick={() => window.location.href = '#contact-form'}>
-            Contactar Servicios Estudiantiles
-          </Button>
-        </div>
       </div>
     </section>;
 };

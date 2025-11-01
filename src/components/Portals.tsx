@@ -60,14 +60,6 @@ const Portals = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-6">
-            ¿Necesitas ayuda con algún portal? Nuestro equipo de soporte está disponible para asistirte.
-          </p>
-          <Button size="lg" onClick={() => window.location.href = '#contact-form'}>
-            Contactar Soporte
-          </Button>
-        </div>
       </div>
     </section>
   );
