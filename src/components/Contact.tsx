@@ -43,31 +43,7 @@ const Contact = () => {
     icon: Clock,
     details: ["Lunes - Viernes: 8:00 AM - 6:00 PM", "Sábado: 9:00 AM - 1:00 PM", "Domingo: Cerrado"]
   }];
-  const departments = [{
-    name: "Admissions Office",
-    phone: "(555) 123-4568",
-    email: "admissions@prestige.edu"
-  }, {
-    name: "Financial Aid",
-    phone: "(555) 123-4570",
-    email: "finaid@prestige.edu"
-  }, {
-    name: "Student Services",
-    phone: "(555) 123-4571",
-    email: "studentservices@prestige.edu"
-  }, {
-    name: "Academic Affairs",
-    phone: "(555) 123-4572",
-    email: "academics@prestige.edu"
-  }, {
-    name: "Housing Office",
-    phone: "(555) 123-4573",
-    email: "housing@prestige.edu"
-  }, {
-    name: "IT Help Desk",
-    phone: "(555) 123-4574",
-    email: "ithelp@prestige.edu"
-  }];
+  const departments = [];
   return <section id="contact" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
@@ -214,28 +190,6 @@ const Contact = () => {
                 </Card>
               );
             })}
-          </div>
-        </div>
-
-        {/* Department Contacts */}
-        <div>
-          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">Contactos por Departamento</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {departments.map((dept, index) => <Card key={index} className="border-0 bg-muted/30">
-                <CardContent className="p-4">
-                  <h4 className="font-semibold text-foreground mb-2">{dept.name}</h4>
-                  <div className="space-y-1 text-sm text-muted-foreground">
-                    <div className="flex items-center">
-                      <Phone className="h-3 w-3 mr-2" />
-                      {dept.phone}
-                    </div>
-                    <div className="flex items-center">
-                      <Mail className="h-3 w-3 mr-2" />
-                      {dept.email}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>)}
           </div>
         </div>
       </div>
