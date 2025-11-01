@@ -55,7 +55,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <GraduationCap className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold text-foreground">Prestige University</span>
+            <span className="text-xl font-bold text-foreground">Universidad Tecnica Federico Santa Maria</span>
           </div>
 
           {/* Desktop Navigation */}
