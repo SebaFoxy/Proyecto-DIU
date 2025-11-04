@@ -23,6 +23,9 @@ const Header = () => {
     name: "Tarjeta USM",
     href: "#services"
   }, {
+    name: "Atención en Salud",
+    href: "#health-care"
+  }, {
     name: "Contacto",
     href: "#contact"
   }];

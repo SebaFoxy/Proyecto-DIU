@@ -4,6 +4,7 @@ import Scholarships from "@/components/Scholarships";
 import Portals from "@/components/Portals";
 import StudentInfo from "@/components/StudentInfo";
 import Services from "@/components/Services";
+import HealthCare from "@/components/HealthCare";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,7 @@ const Index = () => {
         <Portals />
         <StudentInfo />
         <Services />
+        <HealthCare />
         <Contact />
       </main>
       <Footer />

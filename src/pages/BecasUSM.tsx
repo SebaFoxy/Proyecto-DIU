@@ -61,12 +61,16 @@ const BecasUSM = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <Link 
+        to="/" 
+        className="fixed top-24 left-4 z-40 inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg hover:bg-primary/90 transition-all"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Volver
+      </Link>
+      
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
-          <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-8">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Volver al inicio
-          </Link>
 
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
