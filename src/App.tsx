@@ -9,6 +9,7 @@ import BecasUSM from "./pages/BecasUSM";
 import CAE from "./pages/CAE";
 import EquiposSalud from "./pages/EquiposSalud";
 import Atencion from "./pages/Atencion";
+import TarjetaTUI from "./pages/TarjetaTUI";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/cae" element={<CAE />} />
           <Route path="/equipos-salud" element={<EquiposSalud />} />
           <Route path="/atencion" element={<Atencion />} />
+          <Route path="/tarjeta-tui" element={<TarjetaTUI />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

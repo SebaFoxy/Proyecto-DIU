@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CreditCard } from "lucide-react";
+import { Link } from "react-router-dom";
 const Services = () => {
   const services = [{
     title: "Tarjeta de Inteligencia Universitaria (TUI)",
@@ -40,13 +41,14 @@ const Services = () => {
                       </li>)}
                   </ul>
                   
-                  <Button 
-                    variant="outline" 
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-                    onClick={() => window.open(service.link, '_blank')}
-                  >
-                    Más Información
-                  </Button>
+                  <Link to="/tarjeta-tui">
+                    <Button 
+                      variant="outline" 
+                      className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                    >
+                      Más Información
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>;
         })}

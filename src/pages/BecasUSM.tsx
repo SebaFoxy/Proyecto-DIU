@@ -3,10 +3,56 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, GraduationCap, Award, Users, ArrowLeft } from "lucide-react";
+import { Trophy, GraduationCap, Award, Users, ArrowLeft, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
+
+const formSchema = z.object({
+  nombre: z.string().min(1, "El nombre es requerido").max(100, "Máximo 100 caracteres"),
+  rut: z.string()
+    .regex(/^\d{7,8}-[\dkK]$/, "Formato de RUT inválido (xxxxxxxx-x)"),
+  correo: z.string()
+    .email("Correo inválido")
+    .refine((email) => email.endsWith("@gmail.com"), "Solo se aceptan correos @gmail.com")
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const BecasUSM = () => {
+  const [selectedBeca, setSelectedBeca] = useState<string | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      nombre: "",
+      rut: "",
+      correo: ""
+    }
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log("Postulación enviada:", { ...data, beca: selectedBeca });
+    toast({
+      title: "Solicitud enviada",
+      description: "Su postulación será revisada por el equipo de Asuntos Estudiantiles. Recibirá una respuesta en su correo electrónico.",
+    });
+    setIsDialogOpen(false);
+    form.reset();
+  };
+
+  const handlePostular = (becaTitle: string) => {
+    setSelectedBeca(becaTitle);
+    setIsDialogOpen(true);
+  };
+
   const becas = [
     {
       title: "Beca Excelencia Académica USM",
@@ -100,7 +146,7 @@ const BecasUSM = () => {
                   <CardContent>
                     <p className="text-muted-foreground mb-4">{beca.descripcion}</p>
                     
-                    <div className="space-y-2">
+                    <div className="space-y-2 mb-4">
                       <h4 className="font-semibold text-foreground">Requisitos:</h4>
                       <ul className="list-disc list-inside space-y-1 text-muted-foreground">
                         {beca.requisitos.map((req, idx) => (
@@ -108,6 +154,13 @@ const BecasUSM = () => {
                         ))}
                       </ul>
                     </div>
+                    
+                    <Button 
+                      onClick={() => handlePostular(beca.title)}
+                      className="w-full"
+                    >
+                      Postular
+                    </Button>
                   </CardContent>
                 </Card>
               );
@@ -149,6 +202,75 @@ const BecasUSM = () => {
         </div>
       </main>
       <Footer />
+      
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="sm:max-w-[500px]" hideClose>
+          <Button
+            variant="ghost"
+            className="absolute left-4 top-4 gap-2"
+            onClick={() => setIsDialogOpen(false)}
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Volver
+          </Button>
+          
+          <DialogHeader>
+            <DialogTitle className="text-center pt-2">
+              Postulación a {selectedBeca}
+            </DialogTitle>
+          </DialogHeader>
+          
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
+                name="nombre"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Nombre Completo</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Ingrese su nombre completo" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="rut"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>RUT</FormLabel>
+                    <FormControl>
+                      <Input placeholder="12345678-9" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="correo"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Correo Electrónico</FormLabel>
+                    <FormControl>
+                      <Input type="email" placeholder="ejemplo@gmail.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <Button type="submit" className="w-full">
+                Enviar Postulación
+              </Button>
+            </form>
+          </Form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
