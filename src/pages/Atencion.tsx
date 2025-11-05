@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Stethoscope, Brain, Activity, Clock, MapPin, Phone, Mail, ArrowLeft, Calendar } from "lucide-react";
+import { Stethoscope, Brain ,BriefcaseMedical , Activity, Clock, MapPin, Phone, Mail, ArrowLeft, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BookingDialog } from "@/components/BookingDialog.tsx";
 
@@ -60,7 +60,7 @@ const Atencion = () => {
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-8">
               <TabsTrigger value="primaria" className="flex items-center gap-2">
-                <Stethoscope className="h-4 w-4" />
+                <BriefcaseMedical  className="h-4 w-4" />
                 Atención Primaria
               </TabsTrigger>
               <TabsTrigger value="psicologica" className="flex items-center gap-2">
@@ -68,12 +68,12 @@ const Atencion = () => {
                 Atención Psicológica
               </TabsTrigger>
               <TabsTrigger value="dental" className="flex items-center gap-2">
-                <Activity className="h-4 w-4" />
+                <Stethoscope className="h-4 w-4" />
                 Atención Dental
               </TabsTrigger>
               <TabsTrigger value="medica" className="flex items-center gap-2">
                 <Activity className="h-4 w-4" />
-                Atención Medica
+                Atención Kinesiológica
               </TabsTrigger>
               
             </TabsList>
@@ -91,7 +91,7 @@ const Atencion = () => {
                 <CardHeader>
           
                   <div className="flex items-center gap-3 mb-2">
-                    <Stethoscope className="h-8 w-8 text-primary" />
+                    <BriefcaseMedical  className="h-8 w-8 text-primary" />
                     <CardTitle>Atención Primaria de Salud</CardTitle>
                   </div>
                   <CardDescription>
@@ -263,42 +263,45 @@ const Atencion = () => {
 
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
-                    <Activity className="h-8 w-8 text-primary" />
+                    <Stethoscope className="h-8 w-8 text-primary" />
                     <CardTitle>Atención Dental</CardTitle>
                   </div>
                   <CardDescription>
-                    Rehabilitación física y prevención de lesiones
+                    Cuidado integral de tu salud bucodental
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
                     <h3 className="font-semibold text-lg mb-3 text-foreground">Servicios Disponibles</h3>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• Evaluación kinesiológica completa</li>
-                      <li>• Rehabilitación de lesiones deportivas</li>
-                      <li>• Tratamiento de lesiones musculares</li>
-                      <li>• Terapia post-quirúrgica</li>
-                      <li>• Tratamiento de dolor de espalda</li>
-                      <li>• Prevención de lesiones</li>
-                      <li>• Ejercicios terapéuticos personalizados</li>
+                      <li>• Consulta dental integral</li>
+                      <li>• Limpieza dental profesional</li>
+                      <li>• Tratamiento de caries</li>
+                      <li>• Blanqueamiento dental</li>
+                      <li>• Ortodoncia y brackets</li>
+                      <li>• Implantes dentales</li>
+                      <li>• Endodoncia (tratamiento de conducto)</li>
+                      <li>• Prótesis dentales</li>
+                      <li>• Odontología estética</li>
                     </ul>
                   </div>
 
                   <div>
                     <h3 className="font-semibold text-lg mb-3 text-foreground">¿Cuándo Acudir?</h3>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• Lesiones deportivas o físicas</li>
-                      <li>• Dolores musculares persistentes</li>
-                      <li>• Problemas de postura</li>
-                      <li>• Recuperación post-operatoria</li>
-                      <li>• Tendinitis o contracturas</li>
-                      <li>• Prevención antes de actividad física intensa</li>
+                      <li>• Dolor dental o de encías</li>
+                      <li>• Sangrado al cepillarse</li>
+                      <li>• Sensibilidad dental</li>
+                      <li>• Control dental semestral</li>
+                      <li>• Necesidad de limpieza profesional</li>
+                      <li>• Fracturas o pérdida de dientes</li>
+                      <li>• Mal aliento persistente</li>
                     </ul>
                   </div>
 
                   <div className="bg-accent/50 p-4 rounded-lg">
                     <p className="text-sm text-muted-foreground">
-                      <strong className="text-foreground">Importante:</strong> Se recomienda traer ropa cómoda para las sesiones de terapia y seguir las indicaciones del kinesiólogo para mejores resultados.
+                      <strong className="text-foreground">Importante:</strong> Se recomienda mantener una higiene bucal adecuada y asistir a controles regulares cada 6 meses para prevenir problemas dentales.
                     </p>
                   </div>
 
@@ -307,38 +310,37 @@ const Atencion = () => {
                       <Clock className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <p className="font-medium text-foreground">Horario</p>
-                        <p className="text-muted-foreground">Lunes a Viernes: 8:30 - 17:30</p>
+                        <p className="text-muted-foreground">Lunes a Viernes: 9:00 - 18:00</p>
+                        <p className="text-muted-foreground">Sábados: 9:00 - 13:00</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-2">
                       <MapPin className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <p className="font-medium text-foreground">Ubicación</p>
-                        <p className="text-muted-foreground">Centro Deportivo, 1er Piso</p>
+                        <p className="text-muted-foreground">Clínica Dental, 2do Piso</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-2">
                       <Phone className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <p className="font-medium text-foreground">Teléfono</p>
-                        <p className="text-muted-foreground">+56 2 2303 5300</p>
+                        <p className="text-muted-foreground">+56 2 2303 5400</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-2">
                       <Mail className="h-5 w-5 text-primary mt-1" />
                       <div>
                         <p className="font-medium text-foreground">Email</p>
-                        <p className="text-muted-foreground">kinesiologia@usm.cl</p>
+                        <p className="text-muted-foreground">dentista@usm.cl</p>
                       </div>
                     </div>
                   </div>
-
-                  
                 </CardContent>
               </Card>
             </TabsContent>
 
-            {/* Atención Medica */}
+            {/* Atención Kinesiológica */}
             <TabsContent value="medica" className="space-y-6">
               <Card className="relative">
                 <Button
@@ -351,7 +353,7 @@ const Atencion = () => {
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     <Activity className="h-8 w-8 text-primary" />
-                    <CardTitle>Atención Médica</CardTitle>
+                    <CardTitle>Atención Kinesiológica</CardTitle>
                   </div>
                   <CardDescription>
                     Rehabilitación física y prevención de lesiones

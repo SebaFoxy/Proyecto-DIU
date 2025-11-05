@@ -26,28 +26,28 @@ export function BookingDialog({ open, onOpenChange }: BookingDialogProps) {
     {
       id: "1",
       name: "MONICA ALEJANDRA HEVIA VIAL",
-      email: "monica.hevia@hospital.cl",
+      email: "monica.hevia@usm.cl",
       specialty: "PEDIATRIA",
       image: "/placeholder.svg"
     },
     {
       id: "2",
       name: "ROBERTO BALASSA EHRENSTEIN",
-      email: "roberto.balassa@hospital.cl",
+      email: "roberto.balassa@usm.cl",
       specialty: "PEDIATRIA",
       image: "/placeholder.svg"
     },
     {
       id: "3",
       name: "AURORA JESSICA BRAVO MUÑOZ",
-      email: "aurora.bravo@hospital.cl",
+      email: "aurora.bravo@usm.cl",
       specialty: "PEDIATRIA",
       image: "/placeholder.svg"
     },
     {
       id: "4",
       name: "SHUY LING CHANG NIEMANN",
-      email: "shuy.chang@hospital.cl",
+      email: "shuy.chang@usm.cl",
       specialty: "PEDIATRIA",
       image: "/placeholder.svg"
     },
