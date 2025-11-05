@@ -4,15 +4,18 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Stethoscope, Brain, Activity, Clock, MapPin, Phone, Mail, ArrowLeft } from "lucide-react";
+import { Stethoscope, Brain, Activity, Clock, MapPin, Phone, Mail, ArrowLeft, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BookingDialog } from "@/components/BookingDialog";
 
 const Atencion = () => {
   const location = useLocation();
+  const [bookingOpen, setBookingOpen] = useState(false);
   
   // Determinar el tab activo desde el inicio basado en el hash
   const getInitialTab = () => {
     const hash = location.hash.substring(1);
-    if (hash === "primaria" || hash === "psicologica" || hash === "kinesiologica") {
+    if (hash === "primaria" || hash === "psicologica" || hash === "dental"|| hash === "medica") {
       return hash;
     }
     return "primaria";
@@ -28,7 +31,7 @@ const Atencion = () => {
   useEffect(() => {
     if (location.hash) {
       const tabValue = location.hash.substring(1);
-      if (tabValue === "primaria" || tabValue === "psicologica" || tabValue === "kinesiologica") {
+      if (tabValue === "primaria" || tabValue === "psicologica" || tabValue === "dental"|| tabValue === "medica") {
         setActiveTab(tabValue);
       }
     }
@@ -55,7 +58,7 @@ const Atencion = () => {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsList className="grid w-full grid-cols-4 mb-8">
               <TabsTrigger value="primaria" className="flex items-center gap-2">
                 <Stethoscope className="h-4 w-4" />
                 Atención Primaria
@@ -64,16 +67,29 @@ const Atencion = () => {
                 <Brain className="h-4 w-4" />
                 Atención Psicológica
               </TabsTrigger>
-              <TabsTrigger value="kinesiologica" className="flex items-center gap-2">
+              <TabsTrigger value="dental" className="flex items-center gap-2">
                 <Activity className="h-4 w-4" />
-                Atención Kinesiológica
+                Atención Dental
               </TabsTrigger>
+              <TabsTrigger value="medica" className="flex items-center gap-2">
+                <Activity className="h-4 w-4" />
+                Atención Medica
+              </TabsTrigger>
+              
             </TabsList>
 
             {/* Atención Primaria */}
             <TabsContent value="primaria" className="space-y-6">
-              <Card>
+              <Card className="relative">
+                <Button
+                  onClick={() => setBookingOpen(true)}
+                  className="absolute top-4 right-4 z-40 flex items-center gap-2 shadow-lg"
+                >
+                  <Calendar className="h-4 w-4" />
+                  Pedir Hora Médica
+                </Button>
                 <CardHeader>
+          
                   <div className="flex items-center gap-3 mb-2">
                     <Stethoscope className="h-8 w-8 text-primary" />
                     <CardTitle>Atención Primaria de Salud</CardTitle>
@@ -108,6 +124,8 @@ const Atencion = () => {
                     </ul>
                   </div>
 
+                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
                     <div className="flex items-start gap-2">
                       <Clock className="h-5 w-5 text-primary mt-1" />
@@ -138,13 +156,23 @@ const Atencion = () => {
                       </div>
                     </div>
                   </div>
+
+                  
                 </CardContent>
               </Card>
             </TabsContent>
 
             {/* Atención Psicológica */}
             <TabsContent value="psicologica" className="space-y-6">
-              <Card>
+              <Card className="relative">
+                <Button
+                  onClick={() => setBookingOpen(true)}
+                  className="absolute top-4 right-4 z-40 flex items-center gap-2 shadow-lg"
+                >
+                  <Calendar className="h-4 w-4" />
+                  Pedir Hora Médica
+                </Button>
+                
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     <Brain className="h-8 w-8 text-primary" />
@@ -216,17 +244,27 @@ const Atencion = () => {
                       </div>
                     </div>
                   </div>
+
                 </CardContent>
               </Card>
             </TabsContent>
 
-            {/* Atención Kinesiológica */}
-            <TabsContent value="kinesiologica" className="space-y-6">
-              <Card>
+            {/* Atención Dental */}
+            <TabsContent value="dental" className="space-y-6">
+              <Card className="relative">
+                <Button
+                  onClick={() => setBookingOpen(true)}
+                  className="absolute top-4 right-4 z-40 flex items-center gap-2 shadow-lg"
+                >
+                  <Calendar className="h-4 w-4" />
+                  Pedir Hora Médica
+                </Button>
+                
+
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     <Activity className="h-8 w-8 text-primary" />
-                    <CardTitle>Atención Kinesiológica</CardTitle>
+                    <CardTitle>Atención Dental</CardTitle>
                   </div>
                   <CardDescription>
                     Rehabilitación física y prevención de lesiones
@@ -294,12 +332,103 @@ const Atencion = () => {
                       </div>
                     </div>
                   </div>
+
+                  
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Atención Medica */}
+            <TabsContent value="medica" className="space-y-6">
+              <Card className="relative">
+                <Button
+                  onClick={() => setBookingOpen(true)}
+                  className="absolute top-4 right-4 z-40 flex items-center gap-2 shadow-lg"
+                >
+                  <Calendar className="h-4 w-4" />
+                  Pedir Hora Médica
+                </Button>
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Activity className="h-8 w-8 text-primary" />
+                    <CardTitle>Atención Médica</CardTitle>
+                  </div>
+                  <CardDescription>
+                    Rehabilitación física y prevención de lesiones
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div>
+                    <h3 className="font-semibold text-lg mb-3 text-foreground">Servicios Disponibles</h3>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• Evaluación kinesiológica completa</li>
+                      <li>• Rehabilitación de lesiones deportivas</li>
+                      <li>• Tratamiento de lesiones musculares</li>
+                      <li>• Terapia post-quirúrgica</li>
+                      <li>• Tratamiento de dolor de espalda</li>
+                      <li>• Prevención de lesiones</li>
+                      <li>• Ejercicios terapéuticos personalizados</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold text-lg mb-3 text-foreground">¿Cuándo Acudir?</h3>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• Lesiones deportivas o físicas</li>
+                      <li>• Dolores musculares persistentes</li>
+                      <li>• Problemas de postura</li>
+                      <li>• Recuperación post-operatoria</li>
+                      <li>• Tendinitis o contracturas</li>
+                      <li>• Prevención antes de actividad física intensa</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-accent/50 p-4 rounded-lg">
+                    <p className="text-sm text-muted-foreground">
+                      <strong className="text-foreground">Importante:</strong> Se recomienda traer ropa cómoda para las sesiones de terapia y seguir las indicaciones del kinesiólogo para mejores resultados.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                    <div className="flex items-start gap-2">
+                      <Clock className="h-5 w-5 text-primary mt-1" />
+                      <div>
+                        <p className="font-medium text-foreground">Horario</p>
+                        <p className="text-muted-foreground">Lunes a Viernes: 8:30 - 17:30</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <MapPin className="h-5 w-5 text-primary mt-1" />
+                      <div>
+                        <p className="font-medium text-foreground">Ubicación</p>
+                        <p className="text-muted-foreground">Centro Deportivo, 1er Piso</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Phone className="h-5 w-5 text-primary mt-1" />
+                      <div>
+                        <p className="font-medium text-foreground">Teléfono</p>
+                        <p className="text-muted-foreground">+56 2 2303 5300</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Mail className="h-5 w-5 text-primary mt-1" />
+                      <div>
+                        <p className="font-medium text-foreground">Email</p>
+                        <p className="text-muted-foreground">kinesiologia@usm.cl</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  
                 </CardContent>
               </Card>
             </TabsContent>
           </Tabs>
         </div>
       </main>
+      
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
       <Footer />
     </div>
   );

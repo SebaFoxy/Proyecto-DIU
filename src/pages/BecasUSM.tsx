@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -37,7 +37,10 @@ const BecasUSM = () => {
       correo: ""
     }
   });
-
+   useEffect(() => {
+    // Scroll al inicio de la página al cargar
+    window.scrollTo(0, 0);
+  }, []);
   const onSubmit = (data: FormData) => {
     console.log("Postulación enviada:", { ...data, beca: selectedBeca });
     toast({
@@ -167,44 +170,13 @@ const BecasUSM = () => {
             })}
           </div>
 
-          <Card className="bg-muted/30">
-            <CardHeader>
-              <CardTitle>Proceso de Postulación</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <h4 className="font-semibold mb-2">1. Postulación</h4>
-                <p className="text-muted-foreground">
-                  Las becas USM se postulan automáticamente al momento de la matrícula o mediante formulario especial 
-                  disponible en la Dirección de Asuntos Estudiantiles.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">2. Evaluación</h4>
-                <p className="text-muted-foreground">
-                  Los antecedentes son evaluados por comisión especializada según el tipo de beca.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">3. Resultados</h4>
-                <p className="text-muted-foreground">
-                  Los resultados se publican en el portal estudiantil y se notifica vía correo electrónico.
-                </p>
-              </div>
-              
-              <div className="pt-4">
-                <Button size="lg" className="w-full md:w-auto">
-                  Contactar Asuntos Estudiantiles
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          
         </div>
       </main>
       <Footer />
       
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-[500px]" hideClose>
+        <DialogContent className="sm:max-w-[700px]" hideClose>
           <Button
             variant="ghost"
             className="absolute left-4 top-4 gap-2"

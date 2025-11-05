@@ -4,8 +4,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, AlertCircle, Calendar, FileText, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect} from "react";
 
 const CAE = () => {
+  useEffect(() => {
+      // Scroll al inicio de la página al cargar
+      window.scrollTo(0, 0);
+    }, []);
   const requisitos = [
     "Ser ciudadano chileno o extranjero con permanencia definitiva",
     "Tener un promedio de notas de enseñanza media igual o superior a 5.3",
@@ -167,34 +172,7 @@ const CAE = () => {
             </div>
           </div>
 
-          <Card className="bg-muted/30">
-            <CardHeader>
-              <div className="flex items-start gap-3">
-                <AlertCircle className="h-6 w-6 text-primary mt-1" />
-                <div>
-                  <CardTitle>Información Importante</CardTitle>
-                  <CardDescription className="mt-2">
-                    El CAE comienza a pagarse después de haber egresado, con cuotas calculadas según tus ingresos. 
-                    Si tu ingreso es menor al umbral establecido, puedes suspender temporalmente los pagos.
-                  </CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <p className="text-muted-foreground">
-                  <strong>Portal oficial:</strong> Puedes revisar tu estado de postulación y más información en el portal de Beneficios Estudiantiles.
-                </p>
-                <Button 
-                  size="lg" 
-                  className="w-full md:w-auto"
-                  onClick={() => window.open('https://portal.beneficiosestudiantiles.cl/', '_blank')}
-                >
-                  Ir al Portal de Beneficios Estudiantiles
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          
         </div>
       </main>
       <Footer />
