@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Stethoscope, Brain, Activity, Clock, MapPin, Phone, Mail, ArrowLeft, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { BookingDialog } from "@/components/BookingDialog";
+import { BookingDialog } from "@/components/BookingDialog.tsx";
 
 const Atencion = () => {
   const location = useLocation();
