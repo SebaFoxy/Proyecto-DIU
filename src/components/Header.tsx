@@ -1,24 +1,34 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import { Button } from "@/components/ui/button";
 import { Menu, X, GraduationCap } from "lucide-react";
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const isHomePage = location.pathname === "/";
+
+  const handleNavigation = (sectionId: string) => {
+    if (isHomePage) {
+      // Si ya estamos en home, hacer scroll directo
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Si estamos en otra página, navegar a home con el hash
+      navigate(`/#${sectionId}`);
+    }
+    setIsMenuOpen(false);
+  };
   const menuItems = [{
     name: "Inicio",
     href: "#home"
   }, {
     name: "Becas",
     href: "#scholarships"
-  }, {
-    name: "Fondos Concursables",
-    href: "#portals"
-  }, {
-    name: "Información Estudiantil",
-    href: "#student-info"
   }, {
     name: "Tarjeta USM",
     href: "#services"
@@ -64,41 +74,19 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {menuItems.map(item => {
-              if (item.name === "Inicio") {
-                return isHomePage ? (
-                  <a 
-                    key={item.name} 
-                    href={item.href} 
-                    className={`transition-colors font-medium ${
-                      activeSection === item.href.substring(1) 
-                        ? 'text-primary font-bold' 
-                        : 'text-muted-foreground hover:text-primary'
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                ) : (
-                  <Link 
-                    key={item.name} 
-                    to="/" 
-                    className="text-muted-foreground hover:text-primary transition-colors font-medium"
-                  >
-                    {item.name}
-                  </Link>
-                );
-              }
+              const sectionId = item.href.substring(1);
               return (
-                <a 
-                  key={item.name} 
-                  href={isHomePage ? item.href : `/${item.href}`} 
+                <button
+                  key={item.name}
+                  onClick={() => handleNavigation(sectionId)}
                   className={`transition-colors font-medium ${
-                    isHomePage && activeSection === item.href.substring(1) 
-                      ? 'text-primary font-bold' 
+                    isHomePage && activeSection === sectionId
+                      ? 'text-primary font-bold'
                       : 'text-muted-foreground hover:text-primary'
                   }`}
                 >
                   {item.name}
-                </a>
+                </button>
               );
             })}
           </nav>
@@ -113,44 +101,19 @@ const Header = () => {
         {isMenuOpen && <nav className="md:hidden mt-4 pb-4 border-t border-border pt-4">
             <div className="flex flex-col space-y-4">
               {menuItems.map(item => {
-                if (item.name === "Inicio") {
-                  return isHomePage ? (
-                    <a 
-                      key={item.name} 
-                      href={item.href} 
-                      className={`transition-colors font-medium ${
-                        activeSection === item.href.substring(1) 
-                          ? 'text-primary font-bold' 
-                          : 'text-muted-foreground hover:text-primary'
-                      }`}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
-                    <Link 
-                      key={item.name} 
-                      to="/" 
-                      className="text-muted-foreground hover:text-primary transition-colors font-medium"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  );
-                }
+                const sectionId = item.href.substring(1);
                 return (
-                  <a 
-                    key={item.name} 
-                    href={isHomePage ? item.href : `/${item.href}`} 
-                    className={`transition-colors font-medium ${
-                      isHomePage && activeSection === item.href.substring(1) 
-                        ? 'text-primary font-bold' 
+                  <button
+                    key={item.name}
+                    onClick={() => handleNavigation(sectionId)}
+                    className={`transition-colors font-medium text-left ${
+                      isHomePage && activeSection === sectionId
+                        ? 'text-primary font-bold'
                         : 'text-muted-foreground hover:text-primary'
                     }`}
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </button>
                 );
               })}
             </div>

@@ -46,9 +46,9 @@ export function BookingCalendar({ selectedDate, onSelectDate }: BookingCalendarP
         locale={es}
         className="rounded-lg border bg-card p-3 pointer-events-auto"
         classNames={{
-          day_selected: "bg-selected text-selected-foreground hover:bg-selected hover:text-selected-foreground",
+          day_selected: "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
           day: "h-10 w-10 text-sm font-medium",
-          day_today: "bg-accent/10 text-accent font-semibold",
+          day_today: "bg-accent text-accent-foreground font-semibold",
         }}
       />
     </div>

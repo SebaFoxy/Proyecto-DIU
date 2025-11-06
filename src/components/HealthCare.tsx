@@ -29,10 +29,18 @@ const HealthCare = () => {
               <ul className="space-y-3">
                 <li>
                   <Link 
-                    to="/equipos-salud#medico" 
+                    to="/equipos-salud#primaria" 
                     className="text-primary hover:underline font-medium flex items-center gap-2"
                   >
-                    • Equipo Servicio Médico
+                    • Equipo Bienestar Estudiantil
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/equipos-salud#psicologica" 
+                    className="text-primary hover:underline font-medium flex items-center gap-2"
+                  >
+                    • Equipo Psicoligia
                   </Link>
                 </li>
                 <li>
@@ -41,6 +49,14 @@ const HealthCare = () => {
                     className="text-primary hover:underline font-medium flex items-center gap-2"
                   >
                     • Equipo Servicio Dental
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/equipos-salud#medica" 
+                    className="text-primary hover:underline font-medium flex items-center gap-2"
+                  >
+                    • Equipo Servicio Médico
                   </Link>
                 </li>
               </ul>
@@ -65,7 +81,7 @@ const HealthCare = () => {
                     to="/atencion#primaria" 
                     className="text-primary hover:underline font-medium flex items-center gap-2"
                   >
-                    • Atención Primaria
+                    • Atencion al Bienestar Estudiantil
                   </Link>
                 </li>
                 <li>
@@ -78,10 +94,18 @@ const HealthCare = () => {
                 </li>
                 <li>
                   <Link 
-                    to="/atencion#kinesiologica" 
+                    to="/atencion#dental" 
                     className="text-primary hover:underline font-medium flex items-center gap-2"
                   >
-                    • Atención Kinesiológica
+                    • Atención Dental
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/atencion#medica" 
+                    className="text-primary hover:underline font-medium flex items-center gap-2"
+                  >
+                    • Atención Medica
                   </Link>
                 </li>
               </ul>

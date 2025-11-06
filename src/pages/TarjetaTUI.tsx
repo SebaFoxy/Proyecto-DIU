@@ -1,16 +1,30 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CreditCard, Key, Store } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowLeft, CreditCard, Key, Store, Upload } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const TarjetaTUI = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("beneficios");
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    nombre: "",
+    rut: "",
+    rol: "",
+    foto: null as File | null,
+  });
+  const [fotoPreview, setFotoPreview] = useState<string | null>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,16 +34,57 @@ const TarjetaTUI = () => {
     }
   }, [location]);
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFormData({ ...formData, foto: file });
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFotoPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.nombre || !formData.rut || !formData.rol || !formData.foto) {
+      toast({
+        title: "Error",
+        description: "Por favor completa todos los campos",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    toast({
+      title: "Solicitud enviada",
+      description: "Tu solicitud de tarjeta TUI ha sido registrada exitosamente",
+    });
+
+    // Reset form
+    setFormData({
+      nombre: "",
+      rut: "",
+      rol: "",
+      foto: null,
+    });
+    setFotoPreview(null);
+    setShowForm(false);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <main className="container mx-auto px-4 py-12">
-        <Link to="/">
-          <Button variant="ghost" className="mb-8 gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            Volver
-          </Button>
-        </Link>
+        <button
+          onClick={() => navigate(-1)}
+          className="fixed top-24 left-4 z-40 inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg hover:bg-primary/90 transition-all cursor-pointer"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Volver
+        </button>
 
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -105,8 +160,18 @@ const TarjetaTUI = () => {
             </TabsContent>
 
             <TabsContent value="activacion" className="mt-6">
-              <Card>
+              <Card className="relative"> 
+                <div className="mt-6 text-center">
+                    <Button 
+                      onClick={() => setShowForm(true)}
+                      className="absolute top-4 right-4 z-40 flex items-center gap-2 shadow-lg"
+                    >
+                      <CreditCard className="h-5 w-5" />
+                      Obtener la tarjeta
+                    </Button>
+                  </div>
                 <CardHeader>
+                  
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-primary/10 rounded-lg">
                       <Key className="h-6 w-6 text-primary" />
@@ -120,6 +185,7 @@ const TarjetaTUI = () => {
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-6">
+                  
                   <div>
                     <h3 className="font-semibold text-lg mb-3">Proceso de Activación</h3>
                     <ol className="space-y-4">
@@ -187,6 +253,8 @@ const TarjetaTUI = () => {
                       </li>
                     </ul>
                   </div>
+
+                  
                 </CardContent>
               </Card>
             </TabsContent>
@@ -267,6 +335,97 @@ const TarjetaTUI = () => {
               </Card>
             </TabsContent>
           </Tabs>
+
+          <Dialog open={showForm} onOpenChange={setShowForm}>
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle>Solicitud de Tarjeta TUI</DialogTitle>
+                <DialogDescription>
+                  Completa el formulario para solicitar tu tarjeta universitaria
+                </DialogDescription>
+              </DialogHeader>
+              <form onSubmit={handleSubmit} className="space-y-6 mt-4">
+                <div className="space-y-2">
+                  <Label htmlFor="nombre">Nombre completo</Label>
+                  <Input
+                    id="nombre"
+                    value={formData.nombre}
+                    onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
+                    placeholder="Ingresa tu nombre completo"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="rut">RUT</Label>
+                  <Input
+                    id="rut"
+                    value={formData.rut}
+                    onChange={(e) => setFormData({ ...formData, rut: e.target.value })}
+                    placeholder="12345678-9"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="rol">Rol USM</Label>
+                  <Input
+                    id="rol"
+                    value={formData.rol}
+                    onChange={(e) => setFormData({ ...formData, rol: e.target.value })}
+                    placeholder="123456789-0"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="foto">Fotografía</Label>
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-4">
+                      <Input
+                        id="foto"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="flex-1"
+                        required
+                      />
+                      <Upload className="h-5 w-5 text-muted-foreground" />
+                    </div>
+                    {fotoPreview && (
+                      <div className="flex justify-center">
+                        <img
+                          src={fotoPreview}
+                          alt="Vista previa"
+                          className="w-32 h-32 object-cover rounded-lg border-2 border-border"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Formato: JPG, PNG. Tamaño máximo: 5MB
+                  </p>
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <Button type="submit" className="flex-1">
+                    Enviar solicitud
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => {
+                      setShowForm(false);
+                      setFormData({ nombre: "", rut: "", rol: "", foto: null });
+                      setFotoPreview(null);
+                    }}
+                  >
+                    Cancelar
+                  </Button>
+                </div>
+              </form>
+            </DialogContent>
+          </Dialog>
         </div>
       </main>
       <Footer />

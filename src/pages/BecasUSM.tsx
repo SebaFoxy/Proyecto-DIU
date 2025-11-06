@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, GraduationCap, Award, Users, ArrowLeft, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -26,6 +26,7 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 const BecasUSM = () => {
+  const navigate = useNavigate();
   const [selectedBeca, setSelectedBeca] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -110,13 +111,13 @@ const BecasUSM = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <Link 
-        to="/" 
-        className="fixed top-24 left-4 z-40 inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg hover:bg-primary/90 transition-all"
+      <button
+        onClick={() => navigate(-1)}
+        className="fixed top-24 left-4 z-40 inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg hover:bg-primary/90 transition-all cursor-pointer"
       >
         <ArrowLeft className="h-4 w-4" />
         Volver
-      </Link>
+      </button>
       
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
