@@ -15,7 +15,7 @@ const Services = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Tarjeta USM</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ve como sacar tu Tarjeta Inteligente Universitaria (TUI) y los servicios que puedes realizar con ella.
+            Ve como sacar tu Tarjeta Universitaria Inteligente (TUI) y los servicios que puedes realizar con ella.
           </p>
         </div>
 
