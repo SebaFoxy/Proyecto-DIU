@@ -108,25 +108,25 @@ const Atencion = () => {
                   <div>
                     <h3 className="font-semibold text-lg mb-3 text-foreground">Servicios Disponibles</h3>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• Consultas médicas generales</li>
-                      <li>• Control de enfermedades crónicas</li>
-                      <li>• Atención de urgencias menores</li>
-                      <li>• Vacunación y campañas preventivas</li>
-                      <li>• Exámenes de laboratorio básicos</li>
-                      <li>• Recetas médicas y tratamientos</li>
-                      <li>• Certificados médicos</li>
+                      <li>• Orientación personal, académica y social</li>
+                      <li>• Apoyo en la adaptación a la vida universitaria</li>
+                      <li>• Derivación a servicios psicológicos o médicos si es necesario</li>
+                      <li>• Asesoría en beneficios y becas socioeconómicas</li>
+                      <li>• Acompañamiento en situaciones familiares o emocionales complejas</li>
+                      <li>• Consejería sobre equilibrio entre estudio y vida personal</li>
+                      <li>• Talleres sobre autocuidado, organización y manejo del estrés</li>
                     </ul>
                   </div>
 
                   <div>
                     <h3 className="font-semibold text-lg mb-3 text-foreground">¿Cuándo Acudir?</h3>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• Síntomas gripales o resfriados</li>
-                      <li>• Dolores musculares o de cabeza</li>
-                      <li>• Problemas digestivos</li>
-                      <li>• Control de presión arterial</li>
-                      <li>• Evaluación de salud general</li>
-                      <li>• Seguimiento de tratamientos</li>
+                      <li>• Dificultades para adaptarte al ritmo o exigencias universitarias</li>
+                      <li>• Problemas económicos que afecten tu continuidad académica</li>
+                      <li>• Situaciones personales o familiares que influyan en tu bienestar</li>
+                      <li>• Necesidad de orientación sobre beneficios estudiantiles o apoyo institucional</li>
+                      <li>• Sentimientos de ansiedad, desmotivación o sobrecarga académica</li>
+                      <li>• Interés en mejorar tus hábitos de estudio y bienestar emocional</li>
                     </ul>
                   </div>
 
@@ -359,25 +359,25 @@ const Atencion = () => {
                   <div>
                     <h3 className="font-semibold text-lg mb-3 text-foreground">Servicios Disponibles</h3>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• Medicina interna</li>
-                      <li>• Cardiología</li>
-                      <li>• Traumatología</li>
-                      <li>• Ginecología</li>
-                      <li>• Dermatología</li>
-                      <li>• Evaluaciones especializadas</li>
-                      <li>• Seguimiento de tratamientos</li>
+                      <li>• Atención médica general y preventiva</li>
+                      <li>• Evaluaciones de salud integral para estudiantes</li>
+                      <li>• Control y seguimiento de enfermedades crónicas</li>
+                      <li>• Atención de consultas espontáneas</li>
+                      <li>• Entrega de tratamientos y medicamentos básicos</li>
+                      <li>• Derivación a especialistas según necesidad médica</li>
+                      <li>• Orientación sobre hábitos saludables y autocuidado</li>
                     </ul>
                   </div>
 
                   <div>
                     <h3 className="font-semibold text-lg mb-3 text-foreground">¿Cuándo Acudir?</h3>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• Evaluaciones médicas especializadas</li>
-                      <li>• Seguimiento de condiciones crónicas</li>
-                      <li>• Problemas cardíacos</li>
-                      <li>• Lesiones traumatológicas</li>
-                      <li>• Control ginecológico</li>
-                      <li>• Problemas dermatológicos</li>
+                      <li>• Si presentas malestar físico o síntomas que te preocupen</li>
+                      <li>• Para controles médicos preventivos o chequeos de rutina</li>
+                      <li>• Cuando necesites orientación sobre tu salud o bienestar</li>
+                      <li>• En casos de enfermedades crónicas que requieran seguimiento</li>
+                      <li>• Si requieres atención médica general o derivación a un especialista</li>
+                      <li>• Para recibir apoyo en la prevención de enfermedades y promoción de hábitos saludables</li>
                     </ul>
                   </div>
 

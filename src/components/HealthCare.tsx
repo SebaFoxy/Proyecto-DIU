@@ -40,7 +40,7 @@ const HealthCare = () => {
                     to="/equipos-salud#psicologica" 
                     className="text-primary hover:underline font-medium flex items-center gap-2"
                   >
-                    • Equipo Psicoligia
+                    • Equipo Psicología
                   </Link>
                 </li>
                 <li>

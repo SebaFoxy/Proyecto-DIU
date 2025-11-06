@@ -89,10 +89,10 @@ const TarjetaTUI = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Tarjeta de Inteligencia Universitaria (TUI)
+              Tarjeta Inteligente Universitaria (TUI)
             </h1>
             <p className="text-xl text-muted-foreground">
-              Toda la información sobre tu tarjeta universitaria inteligente
+              Toda la información sobre tu Tarjeta Inteligente Universitaria
             </p>
           </div>
 
