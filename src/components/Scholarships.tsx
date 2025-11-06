@@ -106,9 +106,8 @@ const Scholarships = () => {
                   {scholarship.external ? (
                     <Button 
                       className="w-full group-hover:bg-primary/90"
-                      onClick={() => window.open(scholarship.link, '_blank')}
                     >
-                      Más Información
+                      Proximamente
                     </Button>
                   ) : (
                     <Link to={scholarship.link}>
