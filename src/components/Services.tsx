@@ -4,8 +4,8 @@ import { CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
 const Services = () => {
   const services = [{
-    title: "Tarjeta Inteligente Universitaria (TUI)",
-    description: "Gestión y servicios relacionados con tu Tarjeta Inteligente Universitaria.",
+    title: "Tarjeta Universitaria Inteligente (TUI)",
+    description: "Gestión y servicios relacionados con tu Tarjeta Universitaria Inteligente.",
     icon: CreditCard,
     features: ["Activación de Tarjeta", "Recarga de Saldo", "Historial de Transacciones", "Reposición de Tarjeta"],
     link: "https://tui.usm.cl/"
